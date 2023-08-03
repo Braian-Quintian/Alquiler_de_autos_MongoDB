@@ -404,3 +404,6 @@ db.Registro_Devolucion.insertMany([
 ]);
 
 // Alquiler de Autos
+
+// 2
+db.Cliente.find();
