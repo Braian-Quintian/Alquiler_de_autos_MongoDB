@@ -577,3 +577,28 @@ db.getCollection("Alquiler").aggregate([
 // 16
 use("db_campus_alquiler");
 db.Automovil.find({}, { _id: 0 }).sort({ Marca: 1, Modelo: 1 });
+
+//17
+use("db_campus_alquiler");
+db.getCollection("Sucursal_Automovil").aggregate([
+    {
+        $group: {
+            _id: "$ID_Sucursal",
+            Cantidad_Total_Disponible: { $sum: "$Cantidad_Disponible" }
+        }
+    },
+    {
+        $lookup: {
+            from: "Sucursal",
+            localField: "_id",
+            foreignField: "id",
+            as: "sucursal"
+        }
+    },
+    { $unwind: "$sucursal" },
+    {
+        $project: {
+            "sucursal._id": 0,
+        }
+    }
+]);
