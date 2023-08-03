@@ -1,16 +1,4 @@
 use("db_campus_alquiler");
-db.Cliente.aggregate([
-    {
-        $lookup: {
-            from: "Reserva",
-            localField: "id",
-            foreignField: "ID_Cliente",
-            as: "Reservas"
-        }
-    }
-]);
-
-use("db_campus_alquiler");
 db.Cliente.insertMany([
     {
         id: 1,
