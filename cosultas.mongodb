@@ -491,3 +491,7 @@ db.getCollection("Reserva").aggregate([
         }
     }
 ]);
+
+// 6
+use("db_campus_alquiler");
+db.Alquiler.find( { id: 1 } , { _id: 0 });
