@@ -455,3 +455,39 @@ db.getCollection("Alquiler").aggregate([
         }
     }
 ]);
+
+// 5
+use("db_campus_alquiler");
+db.getCollection("Reserva").aggregate([
+    {
+        $match: { Estado: "Pendiente"}
+    },
+    {
+        $lookup: {
+            from: "Cliente",
+            localField: "ID_Cliente",
+            foreignField: "id",
+            as: "cliente"
+        }
+    },
+    { $unwind: "$cliente"},
+    {
+        $lookup: {
+          from: "Automovil",
+          localField: "ID_Automovil",
+          foreignField: "id_",
+          as: "automovil"
+        }
+    },
+    { $unwind: "$automovil"},
+    {
+        $project: {
+            _id: 0,
+            Fecha_Inicio: 0,
+            Fecha_Fin:0,
+            Fecha_Reserva: 0,
+            "cliente._id": 0,
+            "automovil._id": 0
+        }
+    }
+]);
