@@ -638,3 +638,34 @@ db.getCollection("Alquiler").aggregate([
         }
     }
 ]);
+
+// 20
+use("db_campus_alquiler");
+db.getCollection("Reserva").aggregate([
+    {
+        $match: { id: 1 }
+    },
+    {
+        $lookup: {
+            from: "Cliente",
+            localField: "ID_Cliente",
+            foreignField: "id",
+            as: "cliente"
+        }
+    },
+    {
+        $unwind: "$cliente"
+    },
+    {
+        $project: {
+            _id:0,
+          "cliente.id": 1,
+          "cliente.Nombre": 1,
+          "cliente.Apellido": 1,
+          "cliente.DNI":1,
+          "cliente.Direccion":1,
+          "cliente.Telefono":1,
+          "cliente.Email":1
+        }
+    }
+]);
