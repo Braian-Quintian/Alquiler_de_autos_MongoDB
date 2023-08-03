@@ -526,3 +526,7 @@ db.getCollection("Sucursal_Automovil").aggregate([
         }
     }
 ]);
+
+// 9
+use("db_campus_alquiler");
+db.Alquiler.find( { id: 1 } , { _id: 0, Costo_Total: 1 });
