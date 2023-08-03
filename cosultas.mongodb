@@ -402,3 +402,5 @@ db.Registro_Devolucion.insertMany([
         Monto_Adicional: 25.00
     }    
 ]);
+
+// Alquiler de Autos
