@@ -546,3 +546,7 @@ db.Alquiler.find( { Fecha_Inicio: { $eq: ISODate("2023-07-05")}}, { _id :0 })
 // 13
 use("db_campus_alquiler");
 db.Reserva.find( { ID_Cliente: 2 } , { _id : 0 });
+
+// 14
+use("db_campus_alquiler");
+db.Empleado.find( {$or: [ { Cargo: "Gerente" }, { Cargo: "Asistente"} ] }, { _id: 0 });
