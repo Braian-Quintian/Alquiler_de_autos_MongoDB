@@ -602,3 +602,7 @@ db.getCollection("Sucursal_Automovil").aggregate([
         }
     }
 ]);
+
+// 18
+use("db_campus_alquiler");
+db.Alquiler.find({},{ _id: 0});
