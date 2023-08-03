@@ -669,3 +669,7 @@ db.getCollection("Reserva").aggregate([
         }
     }
 ]);
+
+// 21
+use("db_campus_alquiler");
+db.Alquiler.find({Fecha_Inicio: {$gte: ISODate("2023-07-05"),$lte: ISODate("2023-07-10")}}, {_id: 0})
